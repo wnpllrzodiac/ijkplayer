@@ -1122,7 +1122,8 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
 
     @CalledByNative
     private static boolean onNativeInvoke(Object weakThiz, int what, Bundle args) {
-        DebugLog.ifmt(TAG, "onNativeInvoke %d", what);
+		// 2017.4.11 michael comment out        
+		//DebugLog.ifmt(TAG, "onNativeInvoke %d", what);
         if (weakThiz == null || !(weakThiz instanceof WeakReference<?>))
             throw new IllegalStateException("<null weakThiz>.onNativeInvoke()");
 

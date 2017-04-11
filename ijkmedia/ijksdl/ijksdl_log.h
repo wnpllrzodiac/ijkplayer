@@ -30,6 +30,7 @@
 #ifdef __ANDROID__
 
 #include <android/log.h>
+#include <jni.h>
 
 #define IJK_LOG_UNKNOWN     ANDROID_LOG_UNKNOWN
 #define IJK_LOG_DEFAULT     ANDROID_LOG_DEFAULT
@@ -42,8 +43,16 @@
 #define IJK_LOG_FATAL       ANDROID_LOG_FATAL
 #define IJK_LOG_SILENT      ANDROID_LOG_SILENT
 
-#define VLOG(level, TAG, ...)    ((void)__android_log_vprint(level, TAG, __VA_ARGS__))
-#define ALOG(level, TAG, ...)    ((void)__android_log_print(level, TAG, __VA_ARGS__))
+int my_log_init(JavaVM *jvm);
+void my_log_uninit();
+void my_log_print(int prio, const char *tag,  const char *fmt, ...);
+void my_log_vprint(int prio, const char *tag, const char *fmt, va_list ap);
+
+#define VLOG(level, TAG, ...)    ((void)my_log_vprint(level, TAG, __VA_ARGS__))
+#define ALOG(level, TAG, ...)    ((void)my_log_print(level, TAG, __VA_ARGS__))
+
+//#define VLOG(level, TAG, ...)    ((void)__android_log_vprint(level, TAG, __VA_ARGS__))
+//#define ALOG(level, TAG, ...)    ((void)__android_log_print(level, TAG, __VA_ARGS__))
 
 #else
 
