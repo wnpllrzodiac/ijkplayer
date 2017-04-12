@@ -34,7 +34,7 @@ import java.util.Arrays;
  * the superclass.
  */
 
-public final class BufferedRandomAccessFile extends RandomAccessFile {
+final class BufferedRandomAccessFile extends RandomAccessFile {
     static final int LogBuffSz_ = 12; // 4K buffer
     public static final int BuffSz_ = (1 << LogBuffSz_);
     static final long BuffMask_ = ~(((long) BuffSz_) - 1L);

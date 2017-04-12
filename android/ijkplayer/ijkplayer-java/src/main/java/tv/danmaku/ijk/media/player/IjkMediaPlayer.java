@@ -165,6 +165,18 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
 
     private String mDataSource;
 
+	public static boolean init(String logfile, String tempPath) {
+		return LogUtils.init(logfile, tempPath);	
+	}
+
+	public static void setLogLevel(int level) {
+		LogUtils.setLogLevel(level);
+	}
+
+	public static void makeUploadLog() {
+		LogUtils.makeUploadLog();	
+	}
+
     /**
      * Default library loader
      * Load them by yourself, if your libraries are not installed at default place.

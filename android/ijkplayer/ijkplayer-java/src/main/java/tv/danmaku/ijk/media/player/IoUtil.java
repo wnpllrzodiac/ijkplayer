@@ -4,12 +4,7 @@ import java.io.File;
 
 import android.text.TextUtils;
 
-/**
- *
- * @author leoxie
- * @version 2013-3-20
- */
-public class IoUtil {
+class IoUtil {
 
 	public static boolean delete(String filePath) {
 		File f = new File(filePath);

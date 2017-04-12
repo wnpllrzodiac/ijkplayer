@@ -154,6 +154,7 @@ IjkMediaPlayer_setDataSourceAndHeaders(
     JNIEnv *env, jobject thiz, jstring path,
     jobjectArray keys, jobjectArray values)
 {
+	ALOGI("IjkMediaPlayer_setDataSourceAndHeaders");
     MPTRACE("%s\n", __func__);
     int retval = 0;
     const char *c_path = NULL;
@@ -272,6 +273,7 @@ LABEL_RETURN:
 static void
 IjkMediaPlayer_start(JNIEnv *env, jobject thiz)
 {
+	ALOGI("IjkMediaPlayer_start");
     MPTRACE("%s\n", __func__);
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     JNI_CHECK_GOTO(mp, env, "java/lang/IllegalStateException", "mpjni: start: null mp", LABEL_RETURN);
@@ -285,6 +287,7 @@ LABEL_RETURN:
 static void
 IjkMediaPlayer_stop(JNIEnv *env, jobject thiz)
 {
+	ALOGI("IjkMediaPlayer_stop");
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     JNI_CHECK_GOTO(mp, env, "java/lang/IllegalStateException", "mpjni: stop: null mp", LABEL_RETURN);
 
@@ -297,6 +300,7 @@ LABEL_RETURN:
 static void
 IjkMediaPlayer_pause(JNIEnv *env, jobject thiz)
 {
+	ALOGI("IjkMediaPlayer_pause");
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     JNI_CHECK_GOTO(mp, env, "java/lang/IllegalStateException", "mpjni: pause: null mp", LABEL_RETURN);
 
@@ -309,6 +313,7 @@ LABEL_RETURN:
 static void
 IjkMediaPlayer_seekTo(JNIEnv *env, jobject thiz, jlong msec)
 {
+	ALOGI("IjkMediaPlayer_seekTo: %lld msec", msec);
     MPTRACE("%s\n", __func__);
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     JNI_CHECK_GOTO(mp, env, "java/lang/IllegalStateException", "mpjni: seekTo: null mp", LABEL_RETURN);
@@ -364,6 +369,7 @@ LABEL_RETURN:
 static void
 IjkMediaPlayer_release(JNIEnv *env, jobject thiz)
 {
+	ALOGI("IjkMediaPlayer_release");
     MPTRACE("%s\n", __func__);
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     if (!mp)
@@ -385,6 +391,7 @@ static void IjkMediaPlayer_native_setup(JNIEnv *env, jobject thiz, jobject weak_
 static void
 IjkMediaPlayer_reset(JNIEnv *env, jobject thiz)
 {
+	ALOGI("IjkMediaPlayer_reset");
     MPTRACE("%s\n", __func__);
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     if (!mp)
@@ -483,6 +490,7 @@ LABEL_RETURN:
 static void
 ijkMediaPlayer_setStreamSelected(JNIEnv *env, jobject thiz, jint stream, jboolean selected)
 {
+	ALOGI("IjkMediaPlayer_setStreamSelected: #%d, %s", stream, selected ? "ON" : "OFF");
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
     int ret = 0;
     JNI_CHECK_GOTO(mp, env, NULL, "mpjni: setStreamSelected: null mp", LABEL_RETURN);

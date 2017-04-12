@@ -14,7 +14,7 @@ import java.util.Locale;
 
 import android.util.Log;
 
-public class LogUtils {
+class LogUtils {
 
     static final String TAG = "IjkPlayer_LogUtils";
 
@@ -36,6 +36,8 @@ public class LogUtils {
 
     private static boolean inited;
 
+	private static int write_log_level = Log.INFO;
+
     private LogUtils() {
     }
 
@@ -50,6 +52,10 @@ public class LogUtils {
         inited = hasLogPath && hasTempPath;
         return inited;
     }
+
+	public static void setLogLevel(int level) {
+		write_log_level = level;		
+	}
 
     public static void logDeviceInfo() {
         if (!inited) {
@@ -143,7 +149,7 @@ public class LogUtils {
     }
 
     private static void log(int level, String tag, String msg) {
-        if (level >= Log.INFO) {
+        if (level >= write_log_level) {
             writeFile(String.format("%s %s %s: %s", SDF.format(new Date()), getLevelString(level), tag, msg));
         }
 

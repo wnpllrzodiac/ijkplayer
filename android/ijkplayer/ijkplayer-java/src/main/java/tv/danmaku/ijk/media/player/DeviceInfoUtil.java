@@ -12,7 +12,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Build.VERSION;
 
-public class DeviceInfoUtil {
+class DeviceInfoUtil {
     private final static String MEM_INFO_FILE = "/proc/meminfo";
 
     private final static String CPU_DIR = "/sys/devices/system/cpu/";
