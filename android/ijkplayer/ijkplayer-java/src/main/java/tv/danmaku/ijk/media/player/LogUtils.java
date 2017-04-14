@@ -56,6 +56,49 @@ class LogUtils {
 	public static void setLogLevel(int level) {
 		write_log_level = level;		
 	}
+	
+	public static String getLogString() {
+		if (!inited) {
+        	Log.w(TAG, "log is not inited");
+            return "log is not inited!!!";
+        }
+        
+        logDeviceInfo();
+        try {
+        	Log.i(TAG, "Java: begin to get log string");
+            StringBuffer sb = new StringBuffer();
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(infopath)));
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+                sb.append('\n');
+            }
+            br.close();
+            File logfile = new File(logpath);
+            if (logfile.exists()) {
+                sb.append("-----------------\n");
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(logfile)));
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+					sb.append('\n');
+                }
+            }
+            
+            if (braf != null) {
+                braf.flush();
+                braf.close();
+                braf = null;
+            }
+            logfile.delete();
+            Log.i(TAG, "Java: end get log string");
+			
+			return sb.toString();
+        } catch (IOException e) {
+        	e.printStackTrace();
+        }
+		
+		return "get log string error!!!";
+	}
 
     public static void logDeviceInfo() {
         if (!inited) {

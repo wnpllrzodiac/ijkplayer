@@ -176,6 +176,10 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
 	public static void makeUploadLog() {
 		LogUtils.makeUploadLog();	
 	}
+	
+	public static String getLogString() {
+		return LogUtils.getLogString();	
+	}
 
     /**
      * Default library loader

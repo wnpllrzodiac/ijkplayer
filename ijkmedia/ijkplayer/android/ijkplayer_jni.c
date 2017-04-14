@@ -964,6 +964,7 @@ static void message_loop_n(JNIEnv *env, IjkMediaPlayer *mp)
         case FFP_MSG_BUFFERING_TIME_UPDATE:
             break;
         case FFP_MSG_SEEK_COMPLETE:
+			ALOGI("FFP_MSG_SEEK_COMPLETE");
             MPTRACE("FFP_MSG_SEEK_COMPLETE:\n");
             post_event(env, weak_thiz, MEDIA_SEEK_COMPLETE, 0, 0);
             break;
