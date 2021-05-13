@@ -7,6 +7,8 @@ android {
     //noinspection GroovyAssignabilityCheck
     buildToolsVersion rootProject.ext.buildToolsVersion
 
+    ndkVersion '13.0.0'
+
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion rootProject.ext.targetSdkVersion
